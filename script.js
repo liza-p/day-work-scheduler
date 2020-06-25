@@ -6,6 +6,12 @@ let rows = document.querySelectorAll(".row");
 // converting values from localStr into {} & assigning to schedule var 
 let schedule = JSON.parse(localStorage.getItem('schedule')) || {};
 // console.log(schedule);
+// assigning a current timestamp using momentjs
+var timestamp = moment().format('dddd, MMMM Do');
+$('#currentDay').text(timestamp);
+
+
+
 
 
 for(let i = 0; i < rows.length; i++) {
@@ -26,6 +32,15 @@ for(let i = 0; i < rows.length; i++) {
     schedule[rowTime]=event;
     //saving values to localstr converting obj to ""
     localStorage.setItem('schedule',JSON.stringify(schedule) );
+
+   //   if(rowTime === moment().hour()) {
+   //      rows.className = "present";
+   //   } else if( rowTime < moment().hour()){
+   //      rows.className = "past";
+   //   } else if(rowTime > moment().hour()) {
+   //    rows.className = "future"
+   //   } 
+     
 
 
    });
