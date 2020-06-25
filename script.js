@@ -17,7 +17,7 @@ $('#currentDay').text(timestamp);
 for(let i = 0; i < rows.length; i++) {
  
     let currentRow = rows[i];
-   // console.log(i, currentRow);
+   console.log(i, currentRow);
 
    let saveButton = currentRow.querySelector("button");
    let textArea = currentRow.querySelector("textarea")
@@ -25,7 +25,13 @@ for(let i = 0; i < rows.length; i++) {
    
    textArea.value = schedule[rowTime] || "";
 //    console.log(schedule[rowTime]);
-
+   if(rowTime == moment().hour()) {
+      currentRow.querySelector(".event").classList.add("present");
+   } else if( rowTime < moment().hour()){
+   currentRow.querySelector(".event").classList.add("past");
+   } else if(rowTime > moment().hour()) {
+   currentRow.querySelector(".event").classList.add("future");
+   } 
 //
    saveButton.addEventListener('click', function(){
     let event = textArea.value.trim();
@@ -33,13 +39,7 @@ for(let i = 0; i < rows.length; i++) {
     //saving values to localstr converting obj to ""
     localStorage.setItem('schedule',JSON.stringify(schedule) );
 
-   //   if(rowTime === moment().hour()) {
-   //      rows.className = "present";
-   //   } else if( rowTime < moment().hour()){
-   //      rows.className = "past";
-   //   } else if(rowTime > moment().hour()) {
-   //    rows.className = "future"
-   //   } 
+     
      
 
 
