@@ -32,4 +32,4 @@ WHEN I refresh the page
 THEN the saved events persist
 ```
 
-![](./readmeImg/schedulerImg.png)
+![](./readmeImg/scheduler.png)
